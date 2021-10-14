@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
@@ -10,23 +10,17 @@ import FeedingChart from './components/FeedingChart.jsx';
 import NapChart from './components/NapChart.jsx';
 import DiaperChart from './components/DiaperChart.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activities: []
-    };
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+function App() {
+  const [activities, setActivities] = useState([]);
 
-  displayDataAlreadyInDb() {
+  const displayDataAlreadyInDb = () => {
     $.ajax({
       url: '/weebairns',
       type: 'GET',
       success: (data) => {
         console.log('success', data);
-        this.setState({activities: data.reverse()});
-        console.log('🥶', this.state.activities);
+        setActivities(data.reverse());
+        console.log('🥶', activities);
       },
       error: (err) => {
         console.log('error', err);
@@ -34,11 +28,11 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    this.displayDataAlreadyInDb();
-  }
+  useEffect (() => {
+    displayDataAlreadyInDb();
+  }, []);
 
-  onSubmit(data1, data2, data3) {
+  const onSubmit = (data1, data2, data3) => {
     $.ajax({
       url: '/',
       type: 'POST',
@@ -50,8 +44,9 @@ class App extends React.Component {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET', data);
-            this.setState({activities: data.reverse()});
-            console.log('🥸', this.state.activities);
+            // this.setState({activities: data.reverse()});
+            setActivities(data.reverse());
+            console.log('🥸', activities);
           },
           error: (err) => {
             console.log('err', err);
@@ -62,45 +57,45 @@ class App extends React.Component {
         console.log('error', err);
       }
     });
-  }
+  };
 
-  onDelete(data1, data2) {
+  const onDelete = (data1, data2) => {
     $.ajax({
       url: '/deletepls',
       type: 'POST',
       data: {note: data1, time: data2},
       success: (data) => {
-        console.log('🤗', this.state.activities);
-        const filtered = this.state.activities.filter(activities => {
-          return (activities.note !== data1 && activities.time !== data2);
+        console.log('🤗', activities);
+        const filtered = activities.filter(activity => {
+          return (activity.note !== data1 && activity.time !== data2);
         });
         console.log('filtered', filtered);
-        this.setState({activities: filtered});
+        setActivities(filtered);
       },
       error: (err) => {
         console.log('error in sending post to server');
       }
     })
-  }
+  };
 
-  render() {
-    const feedingsArr = this.state.activities.filter(activity => activity.type_id === 1);
-    const napsArr = this.state.activities.filter(activity => activity.type_id === 2);
-    const diapersArr = this.state.activities.filter(activity => activity.type_id === 3);
-    console.log('🤬', feedingsArr);
-    return (
-      <div>
-        <h2>Newborn Log</h2>
-        <ActivityForm onSubmit={this.onSubmit} />
-        <FeedingsList feedings={feedingsArr} onDelete={this.onDelete.bind(this)} />
-        <NapsList naps={napsArr} onDelete={this.onDelete.bind(this)} />
-        <DiapersList diapers={diapersArr} onDelete={this.onDelete.bind(this)} />
-        <FeedingChart feedings={feedingsArr} />
-        <NapChart naps={napsArr} />
-        <DiaperChart diapers={diapersArr} />
-      </div>
-    );
-  }
+  // render() {
+    // const feedingsArr = activities.filter(activity => activity.type_id === 1);
+    // const napsArr = activities.filter(activity => activity.type_id === 2);
+    // const diapersArr = activities.filter(activity => activity.type_id === 3);
+    // console.log('🤬', feedingsArr);
+  return (
+    <div>
+      <h2>Newborn Log</h2>
+      <ActivityForm onSubmit={onSubmit} />
+      <FeedingsList feedings={activities.filter(activity => activity.type_id === 1)} onDelete={onDelete} />
+      <NapsList naps={activities.filter(activity => activity.type_id === 2)} onDelete={onDelete} />
+      <DiapersList diapers={activities.filter(activity => activity.type_id === 3)} onDelete={onDelete} />
+      <FeedingChart feedings={activities.filter(activity => activity.type_id === 1)} />
+      <NapChart naps={activities.filter(activity => activity.type_id === 2)} />
+      <DiaperChart diapers={activities.filter(activity => activity.type_id === 3)} />
+    </div>
+  );
+  // }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

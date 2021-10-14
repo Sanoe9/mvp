@@ -1,68 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-class ActivityForm extends React.Component {
-  constructor(props) {
-    super(props);
+function ActivityForm(props) {
 
-    this.state = {
-      eventValue: 'feedings',
-      timeValue: '',
-      noteValue: ''
-    };
+  const [event, setEvent] = useState('feedings');
+  const [time, setTime] = useState('');
+  const [note, setNote] = useState('');
 
-    this.handleEventChange = this.handleEventChange.bind(this);
-    this.handleTimeChange = this.handleTimeChange.bind(this);
-    this.handleNoteChange = this.handleNoteChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+  const handleEventChange = e => {
+    setEvent(e.target.value);
   }
 
-  handleEventChange(e) {
-    this.setState({eventValue: e.target.value});
+  const handleTimeChange = e => {
+    setTime(e.target.value);
   }
 
-  handleTimeChange(e) {
-    this.setState({timeValue: e.target.value});
+  const handleNoteChange = e => {
+    setNote(e.target.value);
   }
 
-  handleNoteChange(e) {
-    this.setState({noteValue: e.target.value});
-  }
-
-  onSubmit(e) {
+  const onSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state.eventValue, this.state.timeValue, this.state.noteValue);
+    props.onSubmit(event, time, note);
   }
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <label>
-            Type of activity:
-            <select value={this.state.eventValue} onChange={this.handleEventChange}>
-              <option value="feedings">Feeding</option>
-              <option value="naps" >Nap</option>
-              <option value="diapers">Diaper</option>
-            </select>
-          </label>
-          <br />
-          <label>
-            Time of activity:
-            <input type="text" value={this.state.timeValue} onChange={this.handleTimeChange}>
-            </input>
-          </label>
-          <br />
-          <label>
-            Note:
-            <input type="text" value={this.state.noteValue} onChange={this.handleNoteChange}></input>
-          </label>
 
-          <input type="submit" value="Submit"></input>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <form onSubmit={onSubmit}>
+        <label>
+          Type of activity:
+          <select value={event} onChange={handleEventChange}>
+            <option value="feedings">Feeding</option>
+            <option value="naps" >Nap</option>
+            <option value="diapers">Diaper</option>
+          </select>
+        </label>
+        <br />
+        <label>
+          Time of activity:
+          <input type="text" value={time} onChange={handleTimeChange}>
+          </input>
+        </label>
+        <br />
+        <label>
+          Note:
+          <input type="text" value={note} onChange={handleNoteChange}></input>
+        </label>
+
+        <input type="submit" value="Submit"></input>
+      </form>
+    </div>
+  );
+
 }
 
 export default ActivityForm;

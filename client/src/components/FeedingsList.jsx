@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FeedingsListItem from './FeedingsListItem.jsx';
 
-const FeedingsList = (props) => console.log('😇', props.activities) || (
+const FeedingsList = (props) => (
   <div>
     <h5>Here is your feedings' log list:</h5>
     <ul>

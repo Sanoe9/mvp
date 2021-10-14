@@ -3,11 +3,8 @@ import { Bar } from 'react-chartjs-2';
 
 
 const DiaperChart = (props) => {
-  console.log('🥺', props.diapers);
   const arrayOfXData = props.diapers.map(diaper => (Number(diaper.note)));
   const arrayOfYData = props.diapers.map(diaper => (diaper.time));
-  console.log('😎', arrayOfXData);
-  console.log('🥵', arrayOfYData.reverse());
   return (<div>
     <h5>Diapers' Chart</h5>
     <Bar

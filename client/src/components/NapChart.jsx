@@ -3,11 +3,8 @@ import { Bar } from 'react-chartjs-2';
 
 
 const NapChart = (props) => {
-  console.log('🥺', props.naps);
   const arrayOfXData = props.naps.map(nap => (Number(nap.note.substring(0, 1))));
   const arrayOfYData = props.naps.map(nap => (nap.time));
-  console.log('😎', arrayOfXData);
-  console.log('🥵', arrayOfYData.reverse());
   return (<div>
     <h5>Naps' Chart</h5>
     <Bar

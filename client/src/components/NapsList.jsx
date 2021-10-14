@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import NapsListItem from './NapsListItem.jsx';
 
-const NapsList = (props) => console.log('😇', props.activities) || (
+const NapsList = (props) => (
   <div>
     <h5>Here is your naps' log list:</h5>
     <ul>

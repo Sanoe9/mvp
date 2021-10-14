@@ -20,7 +20,6 @@ function App() {
       success: (data) => {
         console.log('success', data);
         setActivities(data.reverse());
-        console.log('🥶', activities);
       },
       error: (err) => {
         console.log('error', err);
@@ -44,9 +43,7 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET', data);
-            // this.setState({activities: data.reverse()});
             setActivities(data.reverse());
-            console.log('🥸', activities);
           },
           error: (err) => {
             console.log('err', err);
@@ -65,11 +62,9 @@ function App() {
       type: 'POST',
       data: {note: data1, time: data2},
       success: (data) => {
-        console.log('🤗', activities);
         const filtered = activities.filter(activity => {
-          return (activity.note !== data1 && activity.time !== data2);
+          return (activity.note !== data1 || activity.time !== data2);
         });
-        console.log('filtered', filtered);
         setActivities(filtered);
       },
       error: (err) => {
@@ -78,11 +73,6 @@ function App() {
     })
   };
 
-  // render() {
-    // const feedingsArr = activities.filter(activity => activity.type_id === 1);
-    // const napsArr = activities.filter(activity => activity.type_id === 2);
-    // const diapersArr = activities.filter(activity => activity.type_id === 3);
-    // console.log('🤬', feedingsArr);
   return (
     <div>
       <h2>Newborn Log</h2>
@@ -95,7 +85,6 @@ function App() {
       <DiaperChart diapers={activities.filter(activity => activity.type_id === 3)} />
     </div>
   );
-  // }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

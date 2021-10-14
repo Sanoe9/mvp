@@ -1,30 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-// const FeedingsListItem = (props) => (
-//   <li>
-//     At {props.time}, baby had {props.note} of milk.
-//   </li>
-// );
+function FeedingsListItem(props) {
 
-class FeedingsListItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
+  const handleClick = () => {
+    props.onDelete(props.note, props.time);
   }
 
-  handleClick() {
-    this.props.onDelete(this.props.note, this.props.time);
-  }
+  return (
+    <li>
+      At {props.time}, baby had {props.note} of milk.
+      <button onClick={handleClick}>Delete</button>
+    </li>
+  );
 
-  render() {
-    return (
-      <li>
-        At {this.props.time}, baby had {this.props.note} of milk.
-        <button onClick={this.handleClick}>Delete</button>
-      </li>
-    );
-  }
 }
 
 export default FeedingsListItem;

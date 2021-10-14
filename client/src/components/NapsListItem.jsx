@@ -1,30 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// const NapsListItem = (props) => (
-//   <li>
-//     At {props.time}, baby took a {props.note} nap.
-//   </li>
-// );
+function NapsListItem(props) {
 
-class NapsListItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
+  const handleClick = () => {
+    props.onDelete(props.note, props.time);
   }
 
-  handleClick() {
-    this.props.onDelete(this.props.note, this.props.time);
-  }
-
-  render() {
-    return (
-      <li>
-        At {this.props.time}, baby took a {this.props.note} nap.
-        <button onClick={this.handleClick}>Delete</button>
-      </li>
-    );
-  }
+  return (
+    <li>
+      At {props.time}, baby took a {props.note} nap.
+      <button onClick={handleClick}>Delete</button>
+    </li>
+  );
 }
 
 export default NapsListItem;

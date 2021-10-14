@@ -3,11 +3,8 @@ import { Bar } from 'react-chartjs-2';
 
 
 const FeedingChart = (props) => {
-  console.log('🥺', props.feedings);
   const arrayOfXData = props.feedings.map(feeding => (Number(feeding.note.substring(0, feeding.note.length - 2))));
   const arrayOfYData = props.feedings.map(feeding => (feeding.time));
-  console.log('😎', arrayOfXData);
-  console.log('🥵', arrayOfYData.reverse());
   return (<div>
     <h5>Feedings' Chart</h5>
     <Bar

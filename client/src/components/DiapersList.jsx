@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DiapersListItem from './DiapersListItem.jsx';
 
-const DiapersList = (props) => console.log('😇', props.activities) || (
+const DiapersList = (props) => (
   <div>
     <h5>Here is your diapers' log list:</h5>
     <ul>

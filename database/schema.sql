@@ -12,7 +12,7 @@ CREATE TABLE events (
   id INT NOT NULL AUTO_INCREMENT,
   type_id INT,
   note VARCHAR(20),
-  time VARCHAR(20),
+  time VARCHAR(200),
   primary key (id),
   foreign key (type_id) references types(id)
 );

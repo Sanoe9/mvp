@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { TimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from '@date-io/date-fns';
 
 function NapsForm(props) {
 
@@ -18,7 +16,7 @@ function NapsForm(props) {
 
   const onNapSubmit = e => {
     e.preventDefault();
-    props.onNapSubmit(ounces, time);
+    props.onNapSubmit(duration, time);
   }
 
   return (
@@ -33,10 +31,9 @@ function NapsForm(props) {
 
         <br />
 
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <label htmlFor="time">Select time of nap</label>
 
-          <TimePicker autoOk label="Time of nap" value={time} onChange={handleTimeChange} />
-        </MuiPickersUtilsProvider>
+        <input type="time" id="time" name="time" required></input>
 
         <input type="submit" value="Submit"></input>
       </form>

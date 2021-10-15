@@ -34,7 +34,8 @@ function App() {
       type: 'POST',
       data: {
         duration: data1,
-        time: data2
+        time: data2,
+        event: 'naps'
       },
       success: (data) => {
         console.log('SUCCESS POST nap', data);
@@ -62,7 +63,8 @@ function App() {
       type: 'POST',
       data: {
         number: data1,
-        time: data2
+        time: data2,
+        event: 'diapers'
       },
       success: () => {
         console.log('success in diapers post');
@@ -90,7 +92,8 @@ function App() {
       type: 'POST',
       data: {
         ounces: data1,
-        time: data2
+        time: data2,
+        event: 'feedings'
       },
       success: () => {
         console.log('success in feedings post');

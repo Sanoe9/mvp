@@ -9,7 +9,7 @@ function NapsListItem(props) {
 
   return (
     <li>
-      At {props.time}, baby took a {props.note} nap.
+      At {props.time}, baby took a {props.note} hour nap.
       <button onClick={handleClick}>Delete</button>
     </li>
   );

@@ -1,7 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { TimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from '@date-io/date-fns';
 
 function FeedingsForm(props) {
 
@@ -33,9 +31,9 @@ function FeedingsForm(props) {
 
         <br />
 
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <TimePicker autoOk label="Time of feeding" value={time} onChange={handleTimeChange} />
-        </MuiPickersUtilsProvider>
+        <label htmlFor="time">Select time of feeding</label>
+
+        <input type="time" id="time" name="time" required></input>
 
         <input type="submit" value="Submit"></input>
       </form>

@@ -1,12 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { TimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from '@date-io/date-fns';
 
 function DiapersForm(props) {
 
   const [number, setNumber] = useState('1');
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState('');
 
   const handleNumberChange = e => {
     setNumber(e.target.value);
@@ -32,9 +30,9 @@ function DiapersForm(props) {
         </label>
 
         <br />
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <TimePicker autoOk label="Time of diaper change" value={time} onChange={handleTimeChange} />
-        </MuiPickersUtilsProvider>
+        <label htmlFor="time">Select time of diaper change</label>
+
+        <input type="time" id="time" name="time" required></input>
 
         <input type="submit" value="Submit"></input>
       </form>

@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import { GiBabyBottle, GiArmoredPants, GiNightSleep } from 'react-icons/gi';
 
-import FeedingsList from './components/FeedingsList.jsx';
-import NapsList from './components/NapsList.jsx';
-import DiapersList from './components/DiapersList.jsx';
-import ActivityForm from './components/ActivityForm.jsx';
-import FeedingChart from './components/FeedingChart.jsx';
-import NapChart from './components/NapChart.jsx';
-import DiaperChart from './components/DiaperChart.jsx';
+import Food from './components/food/Food.jsx';
+import Nap from './components/nap/Nap.jsx';
+import Diaper from './components/diaper/Diaper.jsx';
 
 function App() {
   const [activities, setActivities] = useState([]);
@@ -31,18 +28,21 @@ function App() {
     displayDataAlreadyInDb();
   }, []);
 
-  const onSubmit = (data1, data2, data3) => {
+  const onNapSubmit = (data1, data2) => {
     $.ajax({
-      url: '/',
+      url: '/naps',
       type: 'POST',
-      data: {event: data1, time: data2, note: data3},
+      data: {
+        duration: data1,
+        time: data2
+      },
       success: (data) => {
-        console.log('SUCCESS POST', data);
+        console.log('SUCCESS POST nap', data);
         $.ajax({
           url: '/weebairns',
           type: 'GET',
           success: (data) => {
-            console.log('SUCCESS GET', data);
+            console.log('SUCCESS GET nap', data);
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -52,6 +52,62 @@ function App() {
       },
       error: (err) => {
         console.log('error', err);
+      }
+    });
+  };
+
+  const onDiaperSubmit = (data1, data2) => {
+    $.ajax({
+      url: '/diapers',
+      type: 'POST',
+      data: {
+        number: data1,
+        time: data2
+      },
+      success: () => {
+        console.log('success in diapers post');
+        $.ajax({
+          url: '/weebairns',
+          type: 'GET',
+          success: (data) => {
+            console.log('SUCCESS GET diapers submit', data);
+            setActivities(data.reverse());
+          },
+          error: (err) => {
+            console.log('err in GET diapers submit', err);
+          }
+        });
+      },
+      error: () => {
+        console.log('error in diapers post', err);
+      }
+    });
+  };
+
+  const onFeedingSubmit = (data1, data2) => {
+    $.ajax({
+      url: '/feedings',
+      type: 'POST',
+      data: {
+        ounces: data1,
+        time: data2
+      },
+      success: () => {
+        console.log('success in feedings post');
+        $.ajax({
+          url: '/weebairns',
+          type: 'GET',
+          success: (data) => {
+            console.log('SUCCESS GET feedings submit', data);
+            setActivities(data.reverse());
+          },
+          error: (err) => {
+            console.log('err in GET feedings submit', err);
+          }
+        });
+      },
+      error: () => {
+        console.log('error in feedings post', err);
       }
     });
   };
@@ -75,14 +131,17 @@ function App() {
 
   return (
     <div>
-      <h2>Newborn Log</h2>
-      <ActivityForm onSubmit={onSubmit} />
-      <FeedingsList feedings={activities.filter(activity => activity.type_id === 1)} onDelete={onDelete} />
-      <NapsList naps={activities.filter(activity => activity.type_id === 2)} onDelete={onDelete} />
-      <DiapersList diapers={activities.filter(activity => activity.type_id === 3)} onDelete={onDelete} />
-      <FeedingChart feedings={activities.filter(activity => activity.type_id === 1)} />
-      <NapChart naps={activities.filter(activity => activity.type_id === 2)} />
-      <DiaperChart diapers={activities.filter(activity => activity.type_id === 3)} />
+      <div className="pick_activity">
+        <h2>Pick an activity</h2>
+        <GiBabyBottle />
+        <GiArmoredPants />
+        <GiNightSleep />
+      </div>
+
+      <Nap naps={activities.filter(activity => activity.type_id === 2)} onDelete={onDelete} onNapSubmit={onNapSubmit} />
+      <Food feedings={activities.filter(activity => activity.type_id === 1)} onDelete={onDelete} onFeedingSubmit={onFeedingSubmit} />
+      <Diaper diapers={activities.filter(activity => activity.type_id === 3)} onDelete={onDelete} onDiaperSubmit={onDiaperSubmit} />
+
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import FeedingsListItem from './FeedingsListItem.jsx';
 
 const FeedingsList = (props) => (

@@ -12,7 +12,7 @@ const DiaperChart = (props) => {
         datasets:[{
           label: 'Diapers',
           data: arrayOfXData.reverse(),
-          backgroundColor: 'yellow',
+          backgroundColor: 'rgb(131, 175, 174)',
           barThickness: 20
         }]
       }}
@@ -33,7 +33,7 @@ const DiaperChart = (props) => {
               scaleLabel: {
                 labelString: 'Hours',
                 display: true,
-                fontColor: 'yellow',
+                fontColor: 'rgb(131, 175, 174)',
                 fontSize: 15
               }
             }
@@ -46,7 +46,7 @@ const DiaperChart = (props) => {
               scaleLabel: {
                 labelString: 'Hours',
                 display: true,
-                fontColor: 'yellow',
+                fontColor: 'rgb(131, 175, 174)',
                 fontSize: 15
               },
               ticks:{

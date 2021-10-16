@@ -10,9 +10,9 @@ function DiapersListItem(props) {
 
   return (
     <li style={{listStyleType: "none"}}>
-      <GiArmoredPants />
+      <GiArmoredPants style={{color: "rgb(131, 175, 174)"}} />
       At {props.time}, baby had {props.note} diapers changed.
-      <button onClick={handleClick}>Delete</button>
+      <button className="delete" onClick={handleClick}>Delete</button>
     </li>
   );
 }

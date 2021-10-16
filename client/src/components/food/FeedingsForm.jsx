@@ -33,9 +33,9 @@ function FeedingsForm(props) {
 
         <label htmlFor="time">Select time of feeding</label>
 
-        <input type="time" id="time" name="time" required></input>
+        <input onChange={handleTimeChange} type="time" id="time" name="time" required></input>
 
-        <input type="submit" value="Submit"></input>
+        <input type="submit" className="submit" value="Submit"></input>
       </form>
     </div>
   );

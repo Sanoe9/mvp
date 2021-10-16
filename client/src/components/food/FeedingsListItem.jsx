@@ -10,9 +10,9 @@ function FeedingsListItem(props) {
 
   return (
     <li style={{listStyleType: "none"}}>
-      <GiBabyBottle />
+      <GiBabyBottle style={{color: "rgb(131, 175, 174)"}}/>
       At {props.time}, baby had {props.note} ounces of milk.
-      <button onClick={handleClick}>Delete</button>
+      <button className="delete" onClick={handleClick}>Delete</button>
     </li>
   );
 

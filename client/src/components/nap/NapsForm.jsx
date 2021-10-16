@@ -33,9 +33,9 @@ function NapsForm(props) {
 
         <label htmlFor="time">Select time of nap</label>
 
-        <input type="time" id="time" name="time" required></input>
+        <input type="time" id="time" name="time" onChange={handleTimeChange} required></input>
 
-        <input type="submit" value="Submit"></input>
+        <input type="submit" value="Submit" className="submit"></input>
       </form>
     </div>
   );

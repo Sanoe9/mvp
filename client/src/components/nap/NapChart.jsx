@@ -11,7 +11,7 @@ const NapChart = (props) => {
         datasets:[{
           label: 'Naps',
           data: arrayOfXData.reverse(),
-          backgroundColor: 'blue',
+          backgroundColor: 'rgb(131, 175, 174)',
           barThickness: 20
         }]
       }}

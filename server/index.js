@@ -75,7 +75,6 @@ app.post('/feedings', (req, res) => {
 });
 
 app.get('/weebairns', (req, res) => {
-  console.log('getting to app.get')
   const query = `SELECT * FROM events`;
   db.query(query, (err, data) => {
     if (err) {
@@ -88,7 +87,6 @@ app.get('/weebairns', (req, res) => {
 });
 
 app.post('/deletepls', (req, res) => {
-  console.log('🐾', req.body)
   const query = `DELETE FROM events WHERE note='${req.body.note}' AND time LIKE '%${req.body.time}%'`;
   db.query(query, (err, data) => {
     if (err) {

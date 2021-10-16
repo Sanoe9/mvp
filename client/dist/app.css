@@ -4,17 +4,29 @@ body {
 
 #pick_activity {
   display: flex;
-  /* align-self: stretch; */
-  justify-content: space-between;
-  justify-items: center ;
-}
-
-.pick {
-  /* align-content: flex-start; */
+  justify-content:space-evenly;
 }
 
 .icon {
-  /* justify-content: center; */
-  /* align-self: stretch; */
   cursor: pointer;
+}
+
+#nap {
+  display: flex;
+}
+
+#food {
+  display: flex;
+}
+
+#diaper {
+  display: flex;
+}
+
+.formlist {
+  flex: 1;
+}
+
+.chart {
+  flex: 1;
 }

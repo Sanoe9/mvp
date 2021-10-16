@@ -6,9 +6,13 @@ import NapChart from './NapChart.jsx';
 function Nap(props) {
   return (
     <div id="nap">
-      <NapsForm onNapSubmit={props.onNapSubmit} />
-      <NapsList naps={props.naps} onDelete={props.onDelete} />
-      <NapChart naps={props.naps} />
+      <div className="formlist">
+        <NapsForm onNapSubmit={props.onNapSubmit} />
+        <NapsList naps={props.naps} onDelete={props.onDelete} />
+      </div>
+      <div className="chart">
+        <NapChart naps={props.naps} />
+      </div>
     </div>
   );
 }

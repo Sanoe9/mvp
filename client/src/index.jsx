@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { GiBabyBottle, GiArmoredPants, GiNightSleep } from 'react-icons/gi';
+import { IconContext } from "react-icons";
 
 import Food from './components/food/Food.jsx';
 import Nap from './components/nap/Nap.jsx';
@@ -16,14 +17,14 @@ function App() {
       type: 'GET',
       success: (data) => {
         console.log('success', data);
-        data.map((elem) => elem.time = elem.time.substring(15, 25));
+        data.map((elem) => elem.time = elem.time.substring(15, 21));
         setActivities(data.reverse());
       },
       error: (err) => {
         console.log('error', err);
       }
     });
-  }
+  };
 
   useEffect (() => {
     displayDataAlreadyInDb();
@@ -45,7 +46,7 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET nap', data);
-            data.map((elem) => elem.time = elem.time.substring(15, 25));
+            data.map((elem) => elem.time = elem.time.substring(15, 21));
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -75,7 +76,7 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET diapers submit', data);
-            data.map((elem) => elem.time = elem.time.substring(15, 25));
+            data.map((elem) => elem.time = elem.time.substring(15, 21));
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -105,6 +106,7 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET feedings submit', data);
+            data.map((elem) => elem.time = elem.time.substring(15, 21));
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -139,10 +141,20 @@ function App() {
 
     <div>
       <div id="pick_activity">
-        <h2 className="pick">Pick an activity</h2>
-        <GiBabyBottle className="icon" onClick={() => { const element = document.getElementById('food'); element.scrollIntoView(); }} />
-        <GiArmoredPants className="icon" onClick={() => { const element = document.getElementById('diaper'); element.scrollIntoView(); }} />
-        <GiNightSleep className="icon" onClick={() => { const element = document.getElementById('nap'); element.scrollIntoView(); }} />
+        <IconContext.Provider
+        value={{ color: 'blue', size: '30px' }}>
+          <GiBabyBottle className="icon" onClick={() => { const element = document.getElementById('food'); element.scrollIntoView(); }} />
+        </IconContext.Provider>
+
+        <IconContext.Provider
+        value={{ color: 'blue', size: '30px' }}>
+          <GiArmoredPants className="icon" onClick={() => { const element = document.getElementById('diaper'); element.scrollIntoView(); }} />
+        </IconContext.Provider>
+
+        <IconContext.Provider
+        value={{ color: 'blue', size: '30px' }}>
+          <GiNightSleep className="icon" onClick={() => { const element = document.getElementById('nap'); element.scrollIntoView(); }} />
+        </IconContext.Provider>
       </div>
 
       <Nap naps={activities.filter(activity => activity.type_id === 2)} onDelete={onDelete} onNapSubmit={onNapSubmit} />

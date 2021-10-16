@@ -6,13 +6,11 @@ const DiaperChart = (props) => {
   const arrayOfXData = props.diapers.map(diaper => (Number(diaper.note)));
   const arrayOfYData = props.diapers.map(diaper => (diaper.time));
   return (<div style={{height: "300px", width: "300px"}}>
-    <h5>Diapers' Chart</h5>
     <Bar
       data={{
         labels: arrayOfYData,
         datasets:[{
           label: 'Diapers',
-          // data: [2, 4, 6, 8, 10],
           data: arrayOfXData.reverse(),
           backgroundColor: 'yellow',
           barThickness: 20
@@ -26,7 +24,6 @@ const DiaperChart = (props) => {
         },
         responsive: true,
         maintainAspectRatio: false,
-        // showlines: false,
         scales:{
           xAxes: [
             {

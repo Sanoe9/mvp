@@ -1,18 +1,15 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-
 const FeedingChart = (props) => {
-  const arrayOfXData = props.feedings.map(feeding => (Number(feeding.note.substring(0, feeding.note.length - 2))));
+  const arrayOfXData = props.feedings.map(feeding => feeding.note);
   const arrayOfYData = props.feedings.map(feeding => (feeding.time));
   return (<div style={{height: "300px", width: "300px"}}>
-    <h5>Feedings' Chart</h5>
     <Bar
       data={{
         labels: arrayOfYData,
         datasets:[{
           label: 'Feedings',
-          // data: [2, 4, 6, 8, 10],
           data: arrayOfXData.reverse(),
           backgroundColor: 'green',
           barThickness: 20
@@ -26,7 +23,7 @@ const FeedingChart = (props) => {
         },
         responsive: true,
         maintainAspectRatio: false,
-        // showlines: false,
+        showlines: false,
         scales:{
           xAxes: [
             {
@@ -59,8 +56,6 @@ const FeedingChart = (props) => {
           ]
         }
       }}
-      // height={10}
-      // width={20}
     />
   </div>
   );

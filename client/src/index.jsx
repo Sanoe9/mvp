@@ -16,6 +16,7 @@ function App() {
       type: 'GET',
       success: (data) => {
         console.log('success', data);
+        data.map((elem) => elem.time = elem.time.substring(15, 25));
         setActivities(data.reverse());
       },
       error: (err) => {
@@ -44,6 +45,7 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET nap', data);
+            data.map((elem) => elem.time = elem.time.substring(15, 25));
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -73,6 +75,7 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET diapers submit', data);
+            data.map((elem) => elem.time = elem.time.substring(15, 25));
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -133,12 +136,13 @@ function App() {
   };
 
   return (
+
     <div>
-      <div className="pick_activity">
-        <h2>Pick an activity</h2>
-        <GiBabyBottle />
-        <GiArmoredPants />
-        <GiNightSleep />
+      <div id="pick_activity">
+        <h2 className="pick">Pick an activity</h2>
+        <GiBabyBottle className="icon" onClick={() => { const element = document.getElementById('food'); element.scrollIntoView(); }} />
+        <GiArmoredPants className="icon" onClick={() => { const element = document.getElementById('diaper'); element.scrollIntoView(); }} />
+        <GiNightSleep className="icon" onClick={() => { const element = document.getElementById('nap'); element.scrollIntoView(); }} />
       </div>
 
       <Nap naps={activities.filter(activity => activity.type_id === 2)} onDelete={onDelete} onNapSubmit={onNapSubmit} />

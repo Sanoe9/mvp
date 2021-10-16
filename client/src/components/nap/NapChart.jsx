@@ -5,7 +5,7 @@ import { Bar } from 'react-chartjs-2';
 const NapChart = (props) => {
   const arrayOfXData = props.naps.map(nap => (Number(nap.note.substring(0, 1))));
   const arrayOfYData = props.naps.map(nap => (nap.time));
-  return (<div>
+  return (<div style={{height: "300px", width: "300px"}}>
     <h5>Naps' Chart</h5>
     <Bar
       data={{
@@ -24,6 +24,8 @@ const NapChart = (props) => {
           test: 'Naps of the day',
           fontSize: 20
         },
+        responsive: true,
+        maintainAspectRatio: false,
         // showlines: false,
         scales:{
           xAxes: [
@@ -57,8 +59,8 @@ const NapChart = (props) => {
           ]
         }
       }}
-      // height={10}
-      // width={20}
+      height={5}
+      width={2}
     />
   </div>
   );

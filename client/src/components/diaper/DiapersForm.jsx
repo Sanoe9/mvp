@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 function DiapersForm(props) {
 
   const [number, setNumber] = useState('1');
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState(new Date());
 
   const handleNumberChange = e => {
     setNumber(e.target.value);

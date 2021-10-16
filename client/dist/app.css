@@ -1,5 +1,6 @@
 body {
-  background-color:cadetblue;
+  background-color:rgb(247, 232, 222);
+  color: rgb(156, 163, 165)
 }
 
 #pick_activity {
@@ -11,22 +12,60 @@ body {
   cursor: pointer;
 }
 
+.icon:hover {
+  box-shadow: 0 18px 20px 0 rgba(0,0,0,0.24), 0 20px 70px 0 rgba(0,0,0,0.19);
+  transform: translateY(-2px);
+}
+
 #nap {
   display: flex;
+  margin: 20px;
 }
 
 #food {
   display: flex;
+  padding: 20px;
 }
 
 #diaper {
   display: flex;
+  padding: 20px;
 }
 
 .formlist {
   flex: 1;
+  padding: 10px;
 }
 
 .chart {
   flex: 1;
+  padding: 10px;
+}
+
+.submit {
+  background-color: rgb(131, 175, 174);
+  cursor: pointer;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.submit:hover {
+  box-shadow: 0 18px 20px 0 rgba(0,0,0,0.24), 0 20px 70px 0 rgba(0,0,0,0.19);
+}
+
+.delete {
+  background-color: rgb(131, 175, 174);
+  cursor: pointer;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.delete:hover {
+  box-shadow: 0 18px 20px 0 rgba(0,0,0,0.24), 0 20px 70px 0 rgba(0,0,0,0.19);
 }

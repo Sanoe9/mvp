@@ -11,7 +11,7 @@ const FeedingChart = (props) => {
         datasets:[{
           label: 'Feedings',
           data: arrayOfXData.reverse(),
-          backgroundColor: 'green',
+          backgroundColor: 'rgb(131, 175, 174)',
           barThickness: 20
         }]
       }}

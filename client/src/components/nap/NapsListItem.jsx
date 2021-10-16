@@ -10,9 +10,9 @@ function NapsListItem(props) {
 
   return (
     <li style={{listStyleType: "none"}}>
-      <GiNightSleep />
+      <GiNightSleep style={{color: "rgb(131, 175, 174)"}} />
       At {props.time}, baby took a {props.note} hour nap.
-      <button onClick={handleClick}>Delete</button>
+      <button className="delete" onClick={handleClick}>Delete</button>
     </li>
   );
 }

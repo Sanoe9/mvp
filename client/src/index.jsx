@@ -17,7 +17,6 @@ function App() {
       type: 'GET',
       success: (data) => {
         console.log('success', data);
-        data.map((elem) => elem.time = elem.time.substring(15, 21));
         setActivities(data.reverse());
       },
       error: (err) => {
@@ -46,7 +45,6 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET nap', data);
-            data.map((elem) => elem.time = elem.time.substring(15, 21));
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -76,7 +74,6 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET diapers submit', data);
-            data.map((elem) => elem.time = elem.time.substring(15, 21));
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -106,7 +103,6 @@ function App() {
           type: 'GET',
           success: (data) => {
             console.log('SUCCESS GET feedings submit', data);
-            data.map((elem) => elem.time = elem.time.substring(15, 21));
             setActivities(data.reverse());
           },
           error: (err) => {
@@ -142,17 +138,17 @@ function App() {
     <div>
       <div id="pick_activity">
         <IconContext.Provider
-        value={{ color: 'blue', size: '30px' }}>
+        value={{ color: 'rgb(131, 175, 174)', size: '30px' }}>
           <GiBabyBottle className="icon" onClick={() => { const element = document.getElementById('food'); element.scrollIntoView(); }} />
         </IconContext.Provider>
 
         <IconContext.Provider
-        value={{ color: 'blue', size: '30px' }}>
+        value={{ color: 'rgb(131, 175, 174)', size: '30px' }}>
           <GiArmoredPants className="icon" onClick={() => { const element = document.getElementById('diaper'); element.scrollIntoView(); }} />
         </IconContext.Provider>
 
         <IconContext.Provider
-        value={{ color: 'blue', size: '30px' }}>
+        value={{ color: 'rgb(131, 175, 174)', size: '30px' }}>
           <GiNightSleep className="icon" onClick={() => { const element = document.getElementById('nap'); element.scrollIntoView(); }} />
         </IconContext.Provider>
       </div>

@@ -5,7 +5,7 @@ import FeedingChart from './FeedingChart.jsx';
 
 function Food(props) {
   return (
-    <div>
+    <div id="food">
       <FeedingsForm onFeedingSubmit={props.onFeedingSubmit} />
       <FeedingsList feedings={props.feedings} onDelete={props.onDelete} />
       <FeedingChart feedings={props.feedings} />

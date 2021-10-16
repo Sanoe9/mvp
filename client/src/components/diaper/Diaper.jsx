@@ -5,7 +5,7 @@ import DiaperChart from './DiaperChart.jsx';
 
 function Diaper(props) {
   return (
-    <div>
+    <div id="diaper">
       <DiapersForm onDiaperSubmit={props.onDiaperSubmit} />
       <DiapersList diapers={props.diapers} onDelete={props.onDelete} />
       <DiaperChart diapers={props.diapers} />

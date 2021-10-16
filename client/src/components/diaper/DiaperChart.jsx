@@ -5,7 +5,7 @@ import { Bar } from 'react-chartjs-2';
 const DiaperChart = (props) => {
   const arrayOfXData = props.diapers.map(diaper => (Number(diaper.note)));
   const arrayOfYData = props.diapers.map(diaper => (diaper.time));
-  return (<div>
+  return (<div style={{height: "300px", width: "300px"}}>
     <h5>Diapers' Chart</h5>
     <Bar
       data={{
@@ -24,6 +24,8 @@ const DiaperChart = (props) => {
           test: 'Diapers of the day',
           fontSize: 20
         },
+        responsive: true,
+        maintainAspectRatio: false,
         // showlines: false,
         scales:{
           xAxes: [

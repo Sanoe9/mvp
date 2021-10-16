@@ -9,7 +9,7 @@ function FeedingsListItem(props) {
 
   return (
     <li>
-      At {props.time}, baby had {props.note} of milk.
+      At {props.time}, baby had {props.note} ounces of milk.
       <button onClick={handleClick}>Delete</button>
     </li>
   );

@@ -129,7 +129,9 @@ function App() {
         const filtered = activities.filter(activity => {
           return (activity.note !== data1 || activity.time !== data2);
         });
+        console.log('🍄', filtered)
         setActivities(filtered);
+        console.log('☘️', activities)
       },
       error: (err) => {
         console.log('error in sending post to server');
